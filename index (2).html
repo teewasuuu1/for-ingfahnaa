@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เอฟเฟกต์ความรัก</title>
+    <style>
+        /* ตั้งค่าพื้นหลังและหน้าจอ */
+        body {
+            background-color: #f8f0f8;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* กำหนดตำแหน่งของรูปภาพ */
+        .floating-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            animation: float 5s infinite ease-in-out;
+        }
+
+        /* เอฟเฟกต์ให้รูปภาพลอยขึ้นลง */
+        @keyframes float {
+            0% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-20px);
+            }
+            100% {
+                transform: translate(-50%, -50%) translateY(0);
+            }
+        }
+
+        /* กำหนดรูปหัวใจ */
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: heartAnimation 2s infinite;
+        }
+
+        /* เอฟเฟกต์หัวใจลอยขึ้น */
+        @keyframes heartAnimation {
+            0% {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5) translateY(-20px);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                opacity: 0;
+            }
+        }
+
+        /* กำหนดลิงค์ที่เมื่อคลิกแล้วจะไปที่ที่คุณกำหนด */
+        .link {
+            position: absolute;
+            top: 80%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .link:hover {
+            background-color: #ff1493;
+        }
+    </style>
+</head>
+<body>
+    <!-- รูปภาพที่ลอยอยู่ -->
+    <img src=https://assets.onecompiler.app/438p7wmay/438ybbsra/Screenshot%202025-02-13%20051802%20(1).png alt="รูปภาพของคุณ" class="floating-image" id="floatingImage">
+
+    <!-- เอฟเฟกต์หัวใจ -->
+    <div class="heart" id="heart1">&#10084;</div>
+    <div class="heart" id="heart2">&#10084;</div>
+    <div class="heart" id="heart3">&#10084;</div>
+
+    <!-- ลิงค์ที่จะแสดงเมื่อคลิก -->
+    <a href=https://www.canva.com/design/DAGe__C-Q6U/Bnl2vc1xI5Tx-GxjlVp_Gw/view?utm_content=DAGe__C-Q6U&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf4b28ad345 class="link" target="_blank">คลิกที่นี่</a>
+
+    <script>
+        // ฟังก์ชันสร้างหัวใจแบบสุ่ม
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = window.innerHeight + 'px';
+
+            document.body.appendChild(heart);
+
+            // ลบหัวใจเมื่อมันลอยออกไป
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+
+        // เรียกใช้ฟังก์ชันเพื่อสร้างหัวใจ
+        setInterval(createHearts, 500); // สร้างหัวใจทุก 500ms
+    </script>
+</body>
+</html>
